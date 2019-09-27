@@ -1,0 +1,75 @@
+MODEL:
+  TYPE: hsd_vgg
+  SIZE: '512'
+  CASCADE: True
+  CONV_BODY: hsd_vgg.hsd_vgg
+  NUM_CLASSES: 81
+  LOAD_PRETRAINED_WEIGHTS: True
+  PRETRAIN_WEIGHTS: './weights/pretrained_models/vgg16_reducedfc.pth'
+
+TRAIN:
+  OVERLAP: 0.5
+  BGR_MEAN: [104, 117, 123]
+  BATCH_SIZE: 32
+  OHEM: True
+  NEG_RATIO: 3
+  WARMUP: True
+  WARMUP_EPOCH: 2
+  TRAIN_ON: True
+
+
+SMALL:
+  FEATURE_MAPS: [[40, 40], [20, 20], [10, 10], [5, 5]]
+  ARM_CHANNELS: [256, 256, 256, 256]
+  ODM_CHANNELS: [256, 256, 256, 256]
+  NUM_ANCHORS: [3, 3, 3, 3]
+  STEPS: [[8, 8], [16, 16], [32, 32], [64, 64]]
+  MIN_SIZES: [20, 45, 112, 256]
+  MAX_SIZES: [45, 112, 256, 315]
+  ASPECT_RATIOS : [[2, 0.5], [2, 0.5], [2, 0.5], [2, 0.5]]
+  VARIANCE : [0.1, 0.2]
+  CLIP: True
+  IMG_WH: [320, 320]
+  INPUT_FIXED: True # if you want to input different size, you need to set this False.
+  USE_MAX_SIZE: False
+
+BIG:
+  FEATURE_MAPS: [[64, 64], [32, 32], [16, 16], [8, 8]]
+  ARM_CHANNELS: [256, 256, 256, 256]
+  ODM_CHANNELS: [256, 256, 256, 256]
+  NUM_ANCHORS: [3, 3, 3, 3]
+  STEPS: [[8, 8], [16, 16], [32, 32], [64, 64]]
+  MIN_SIZES: [30, 64, 128, 256]
+  MAX_SIZES: [64, 128, 256, 315]
+  ASPECT_RATIOS : [[2, 0.5], [2, 0.5], [2, 0.5], [2, 0.5]]
+  CLIP: True
+  IMG_WH: [512, 512]
+  INPUT_FIXED: True # if you want to input different size, you need to set this False.
+  USE_MAX_SIZE: False
+
+SOLVER:
+  WEIGHT_DECAY: 0.0005
+  BASE_LR: 0.004
+  GAMMA: 0.1
+  MOMENTUM: 0.9
+  EPOCH_STEPS: [0, 90, 140]
+  END_EPOCH: 160
+  START_EPOCH: 0
+
+DATASETS:
+  TRAIN_TYPE: [['2014', 'train'], ['2014', 'valminusminival']]
+  VAL_TYPE: [['2014', 'minival']]
+  DATAROOT: 'data/COCO/'
+  DATA_TYPE: 'COCO'
+
+  
+TEST:
+  INPUT_WH: [320, 320]
+  CONFIDENCE_THRESH: 0.01
+  NMS_OVERLAP: 0.45
+  BATCH_SIZE: 16
+  
+
+
+
+
