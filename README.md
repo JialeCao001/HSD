@@ -1,6 +1,6 @@
 # HSD
 
-This code is a official implementation of "Hierarchical Shot Detector (ICCV2019)" on COCO object detection with Pytorch. 
+This code is a official implementation of "[Hierarchical Shot Detector (ICCV2019)](https://openaccess.thecvf.com/content_ICCV_2019/papers/Cao_Hierarchical_Shot_Detector_ICCV_2019_paper.pdf)" on COCO object detection with Pytorch. 
 
 ## Introduction
 We propose a novel pipeline for accurate object detection (called ROC). Instead of simultaneous classification and regression, ROC firstly conducts box regression, secondly predicts the feature sampling locations for box classification, and finally classifies regressed boxes with the features of offset locations. To achieve the better detection accuracy, a hierarchical shot detector is proposed by stacking two ROC modules. Meanwhile, the contextual information is also incorporated to enrich the features of the second ROC module.
