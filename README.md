@@ -70,7 +70,7 @@ e.g., python eval.py --cfg ./configs/hsd_vgg_coco_320.yaml --weights ./weights/h
 If the project helps your research, please cite this paper.
 
 ```
-@misc{Cao_HSD_ICCV_2019,
+@article{Cao_HSD_ICCV_2019,
   author =       {Jiale Cao and Yanwei Pang and Jungong Han and Xuelong Li},
   title =        {Hierarchical Shot Detector},
   journal =      {Proc. International Conference on Computer Vision},
